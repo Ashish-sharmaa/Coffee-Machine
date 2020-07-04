@@ -1,8 +1,7 @@
 package com.coffee.simulation;
 
-public class Main {
-
+public class DrinkMachine {
+    private static int outlet;
     public static void main(String[] args) {
-        System.out.println("hello");
     }
 }
