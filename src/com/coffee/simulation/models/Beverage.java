@@ -2,11 +2,11 @@ package com.coffee.simulation.models;
 
 import java.util.ArrayList;
 
-public class Beverages {
+public class Beverage {
     private String name;
-    private ArrayList<Ingredients> requiredIngredients;
+    private ArrayList<Ingredient> requiredIngredients;
 
-    public Beverages(String name, ArrayList<Ingredients> requiredIngredients) {
+    public Beverage(String name, ArrayList<Ingredient> requiredIngredients) {
         this.name = name;
         this.requiredIngredients = requiredIngredients;
     }

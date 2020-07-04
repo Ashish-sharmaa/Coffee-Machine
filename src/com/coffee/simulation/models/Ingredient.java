@@ -1,10 +1,10 @@
 package com.coffee.simulation.models;
 
-public class Ingredients {
+public class Ingredient {
     private String name;
-    private int quantity;
+    private Long quantity;
 
-    public Ingredients(String name, int quantity) {
+    public Ingredient(String name, Long quantity) {
         this.name = name;
         this.quantity = quantity;
     }
@@ -13,7 +13,7 @@ public class Ingredients {
         return this.name;
     }
 
-    public int getQuantity() {
+    public Long getQuantity() {
         return this.quantity;
     }
 }
