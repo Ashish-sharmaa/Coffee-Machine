@@ -15,8 +15,8 @@ public class InputProcessor {
     public static JSONObject parseJson(String path, String key) throws IOException, ParseException {
         Object obj = new JSONParser().parse(new FileReader(path));
         return (JSONObject) ((JSONObject) obj).get(key);
-
     }
+
     public static Long getOutLetCount(JSONObject outlets) {
         return (Long) outlets.get("count_n");
     }

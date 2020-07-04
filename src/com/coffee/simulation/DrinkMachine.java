@@ -16,5 +16,10 @@ public class DrinkMachine {
         ArrayList<Ingredient> inventory = InputProcessor.getIngredients((JSONObject) machine.get("total_items_quantity"));
         ArrayList<Beverage> beverages = InputProcessor.getBeverages((JSONObject) machine.get("beverages"));
         Long outletCount = InputProcessor.getOutLetCount((JSONObject) machine.get("outlets"));
+        makeDrink(outletCount, inventory, beverages);
+    }
+
+    private static void makeDrink(Long outLetCount, ArrayList<Ingredient> inventory, ArrayList<Beverage> beverages) {
+
     }
 }

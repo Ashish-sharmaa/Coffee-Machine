@@ -16,4 +16,21 @@ public class Ingredient {
     public Long getQuantity() {
         return this.quantity;
     }
+
+    public synchronized boolean checkAndUpdateQuantity(Long quantity) {
+        if (checkForAvailability(quantity)) {
+            updateQuantity(quantity);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean checkForAvailability(Long requiredQuantity) {
+       return this.quantity >= requiredQuantity;
+    }
+
+    private void updateQuantity(Long usedQuantity) {
+        this.quantity = this.quantity - usedQuantity;
+    }
 }
