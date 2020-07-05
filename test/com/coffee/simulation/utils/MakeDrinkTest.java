@@ -7,7 +7,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class MakeDrinkTest {
     @Test
@@ -78,7 +79,7 @@ public class MakeDrinkTest {
         ));
         try {
             MakeDrink.checkAndUpdateQuantity(beverage, inventory);
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail("Method checkAndUpdateQuantity should not throw exception: " + e.getMessage());
         }
     }
@@ -98,7 +99,7 @@ public class MakeDrinkTest {
         ));
         try {
             MakeDrink.checkAndUpdateQuantity(beverage, inventory);
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail("Method checkAndUpdateQuantity should not throw exception: " + e.getMessage());
         }
     }
@@ -117,7 +118,7 @@ public class MakeDrinkTest {
         ));
         try {
             MakeDrink.checkAndUpdateQuantity(beverage, inventory);
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail("Method checkAndUpdateQuantity should not throw exception: " + e.getMessage());
         }
     }
@@ -137,7 +138,7 @@ public class MakeDrinkTest {
         ));
         try {
             MakeDrink.updateQuantity(beverage, inventory);
-        } catch(Exception e) {
+        } catch (Exception e) {
             fail("Method updateQuantity should not throw exception: " + e.getMessage());
         }
     }

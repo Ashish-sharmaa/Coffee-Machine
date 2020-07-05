@@ -27,11 +27,12 @@ public class InputProcessorTest {
         try {
             InputProcessor.getOutLetCount(jsonObject);
             fail("getOutLetCount method should throw exception in case of missing input");
-        } catch(Exception e) {
+        } catch (Exception e) {
             String expectedResult = "count_n is not Integer";
             String actualResult = e.getMessage();
             assertEquals(expectedResult, actualResult);
-        }}
+        }
+    }
 
     @Test
     public void getOutLetCountForStringInput() {
@@ -40,7 +41,7 @@ public class InputProcessorTest {
         try {
             InputProcessor.getOutLetCount(jsonObject);
             fail("getOutLetCount method should throw exception in case of string input");
-        } catch(Exception e) {
+        } catch (Exception e) {
             String expectedResult = "count_n is not Integer";
             String actualResult = e.getMessage();
             assertEquals(expectedResult, actualResult);
@@ -60,14 +61,14 @@ public class InputProcessorTest {
                 new Beverage("hot_coffee", new ArrayList<Ingredient>())
         ));
         assertEquals(expectedResult.size(), actualResult.size());
-        for (Beverage beverage: actualResult) {
+        for (Beverage beverage : actualResult) {
             assertTrue(beverageExists(beverage.getName(), expectedResult));
         }
     }
 
-    private boolean beverageExists(String name, @NotNull ArrayList<Beverage> list) {
-        for (Beverage item: list) {
-            if (item.getName().equals(name)) {
+    private boolean beverageExists(String name, @NotNull ArrayList<Beverage> beverages) {
+        for (Beverage beverage : beverages) {
+            if (beverage.getName().equals(name)) {
                 return true;
             }
         }
@@ -87,14 +88,14 @@ public class InputProcessorTest {
                 new Ingredient("masala", 300L)
         ));
         assertEquals(expectedResult.size(), actualResult.size());
-        for (Ingredient ingredient: actualResult) {
+        for (Ingredient ingredient : actualResult) {
             assertTrue(ingredientExists(ingredient.getName(), expectedResult));
         }
     }
 
-    private boolean ingredientExists(String name, @NotNull ArrayList<Ingredient> list) {
-        for (Ingredient item: list) {
-            if (item.getName().equals(name)) {
+    private boolean ingredientExists(String name, @NotNull ArrayList<Ingredient> ingredients) {
+        for (Ingredient ingredient : ingredients) {
+            if (ingredient.getName().equals(name)) {
                 return true;
             }
         }

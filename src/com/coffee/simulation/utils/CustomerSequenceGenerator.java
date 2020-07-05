@@ -21,7 +21,7 @@ public class CustomerSequenceGenerator {
         }
         System.out.println("Number of lots customers came in: " + input.size());
         System.out.println("[");
-        for (ArrayList<Integer> list: input) {
+        for (ArrayList<Integer> list : input) {
             System.out.print(" [");
             for (Integer innerIter : list) {
                 if (innerIter > -1) {
