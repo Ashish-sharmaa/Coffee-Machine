@@ -2,6 +2,7 @@ package com.coffee.simulation.utils;
 
 import com.coffee.simulation.models.Beverage;
 import com.coffee.simulation.models.Ingredient;
+import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -16,11 +17,15 @@ public class InputProcessor {
         return (JSONObject) ((JSONObject) obj).get(key);
     }
 
-    public static Long getOutLetCount(JSONObject outlets) {
-        return (Long) outlets.get("count_n");
+    public static Long getOutLetCount(@NotNull JSONObject outlets) {
+        if (outlets.get("count_n") instanceof Long) {
+            return (Long) outlets.get("count_n");
+        } else {
+            throw new IllegalStateException("count_n is not Integer");
+        }
     }
 
-    public static ArrayList<Ingredient> getIngredients(JSONObject inputIngredients) {
+    public static @NotNull ArrayList<Ingredient> getIngredients(@NotNull JSONObject inputIngredients) {
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         for (Object name : inputIngredients.keySet()) {
             ingredients.add(new Ingredient((String) name, (Long) inputIngredients.get(name)));
@@ -28,7 +33,7 @@ public class InputProcessor {
         return ingredients;
     }
 
-    public static ArrayList<Beverage> getBeverages(JSONObject inputBeverages) {
+    public static @NotNull ArrayList<Beverage> getBeverages(@NotNull JSONObject inputBeverages) {
         ArrayList<Beverage> beverages = new ArrayList<>();
         for (Object beverage : inputBeverages.keySet()) {
             beverages.add(new Beverage((String) beverage,
