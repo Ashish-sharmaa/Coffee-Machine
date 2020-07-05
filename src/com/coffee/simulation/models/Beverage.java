@@ -10,4 +10,12 @@ public class Beverage {
         this.name = name;
         this.requiredIngredients = requiredIngredients;
     }
+
+    public ArrayList<Ingredient> getrequiredIngredients() {
+        return this.requiredIngredients;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }

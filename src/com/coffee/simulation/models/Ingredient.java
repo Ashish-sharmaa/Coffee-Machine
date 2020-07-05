@@ -17,20 +17,16 @@ public class Ingredient {
         return this.quantity;
     }
 
-    public synchronized boolean checkAndUpdateQuantity(Long quantity) {
-        if (checkForAvailability(quantity)) {
-            updateQuantity(quantity);
-            return true;
-        } else {
-            return false;
-        }
+    private void updateQuantity(Long quantity) {
+        this.quantity = this.quantity + quantity;
     }
 
-    private boolean checkForAvailability(Long requiredQuantity) {
-       return this.quantity >= requiredQuantity;
+    public void decreaseQuantity(Long usedQuantity) {
+        updateQuantity(-1 * usedQuantity);
     }
 
-    private void updateQuantity(Long usedQuantity) {
-        this.quantity = this.quantity - usedQuantity;
+    public void increaseQuantity(Long quantityAdded) {
+        updateQuantity(quantityAdded);
     }
+
 }
