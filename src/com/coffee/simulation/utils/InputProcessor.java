@@ -25,7 +25,7 @@ public class InputProcessor {
         }
     }
 
-    public static @NotNull ArrayList<Ingredient> getIngredients(@NotNull JSONObject inputIngredients) {
+    public static ArrayList<Ingredient> getIngredients(@NotNull JSONObject inputIngredients) {
         ArrayList<Ingredient> ingredients = new ArrayList<>();
         for (Object name : inputIngredients.keySet()) {
             ingredients.add(new Ingredient((String) name, (Long) inputIngredients.get(name)));
@@ -33,7 +33,7 @@ public class InputProcessor {
         return ingredients;
     }
 
-    public static @NotNull ArrayList<Beverage> getBeverages(@NotNull JSONObject inputBeverages) {
+    public static ArrayList<Beverage> getBeverages(@NotNull JSONObject inputBeverages) {
         ArrayList<Beverage> beverages = new ArrayList<>();
         for (Object beverage : inputBeverages.keySet()) {
             beverages.add(new Beverage((String) beverage,
