@@ -2,6 +2,7 @@ package com.coffee.simulation.utils;
 
 import com.coffee.simulation.models.Beverage;
 import com.coffee.simulation.models.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class MakeDrink implements Runnable {
         this.inventory = inventory;
     }
 
-    synchronized public static void checkAndUpdateQuantity(Beverage beverage,
+    synchronized public static void checkAndUpdateQuantity(@NotNull Beverage beverage,
                                                            ArrayList<Ingredient> inventory) {
         System.out.println("Drink to be made: " + beverage.getName());
         if (checkForAvailability(beverage, inventory)) {
@@ -27,7 +28,7 @@ public class MakeDrink implements Runnable {
         System.out.println();
     }
 
-    private static boolean checkForAvailability(Beverage beverage,
+    private static boolean checkForAvailability(@NotNull Beverage beverage,
                                                 ArrayList<Ingredient> inventory) {
         for (Ingredient required : beverage.getRequiredIngredients()) {
             boolean isItemExists = false;
@@ -40,7 +41,7 @@ public class MakeDrink implements Runnable {
                     }
                 }
             }
-            if (isItemExists == false) {
+            if (!isItemExists) {
                 System.out.println("***" + beverage.getName() + " cannot be prepared because " + required.getName() + " is not available***");
                 return false;
             }
@@ -48,7 +49,7 @@ public class MakeDrink implements Runnable {
         return true;
     }
 
-    private static void updateQuantity(Beverage beverage, ArrayList<Ingredient> inventory) {
+    private static void updateQuantity(@NotNull Beverage beverage, ArrayList<Ingredient> inventory) {
         for (Ingredient required : beverage.getRequiredIngredients()) {
             for (Ingredient available : inventory) {
                 if (required.getName().equals(available.getName())) {
