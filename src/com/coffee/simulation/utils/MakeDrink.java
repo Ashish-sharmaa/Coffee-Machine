@@ -14,29 +14,24 @@ public class MakeDrink implements Runnable {
         this.inventory = inventory;
     }
 
-    @Override
-    public void run() {
-        checkAndUpdateQuantity(beverage, inventory);
-    }
-
     synchronized public static void checkAndUpdateQuantity(Beverage beverage,
                                                            ArrayList<Ingredient> inventory) {
         System.out.println("Drink to be made: " + beverage.getName());
-        if (checkForAvailability( beverage, inventory)) {
-            updateQuantity( beverage, inventory);
+        if (checkForAvailability(beverage, inventory)) {
+            updateQuantity(beverage, inventory);
         }
         System.out.println("Ingredients available after " + beverage.getName() + ":");
-        for (Ingredient ingredient: inventory) {
-            System.out.print(ingredient.getName()+ ": " + ingredient.getQuantity() + " ");
+        for (Ingredient ingredient : inventory) {
+            System.out.print(ingredient.getName() + ": " + ingredient.getQuantity() + " ");
         }
         System.out.println();
     }
 
     private static boolean checkForAvailability(Beverage beverage,
                                                 ArrayList<Ingredient> inventory) {
-        for (Ingredient required: beverage.getrequiredIngredients()) {
+        for (Ingredient required : beverage.getRequiredIngredients()) {
             boolean isItemExists = false;
-            for (Ingredient available: inventory) {
+            for (Ingredient available : inventory) {
                 if (required.getName().equals(available.getName())) {
                     isItemExists = true;
                     if (required.getQuantity() > available.getQuantity()) {
@@ -54,13 +49,18 @@ public class MakeDrink implements Runnable {
     }
 
     private static void updateQuantity(Beverage beverage, ArrayList<Ingredient> inventory) {
-        for (Ingredient required: beverage.getrequiredIngredients()) {
-            for (Ingredient available: inventory) {
+        for (Ingredient required : beverage.getRequiredIngredients()) {
+            for (Ingredient available : inventory) {
                 if (required.getName().equals(available.getName())) {
                     available.decreaseQuantity(required.getQuantity());
                 }
             }
         }
         System.out.println("***" + beverage.getName() + " is prepared***");
+    }
+
+    @Override
+    public void run() {
+        checkAndUpdateQuantity(beverage, inventory);
     }
 }

@@ -1,7 +1,7 @@
 package com.coffee.simulation.models;
 
 public class Ingredient {
-    private String name;
+    private final String name;
     private Long quantity;
 
     public Ingredient(String name, Long quantity) {

@@ -1,8 +1,4 @@
 package com.coffee.simulation;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import com.coffee.simulation.models.Beverage;
 import com.coffee.simulation.models.Ingredient;
@@ -12,6 +8,10 @@ import com.coffee.simulation.utils.InputProcessor;
 import com.coffee.simulation.utils.MakeDrink;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class DrinkMachine {
     public static void main(String[] args) throws IOException, ParseException, InterruptedException {
@@ -28,8 +28,8 @@ public class DrinkMachine {
 
     private static void prepareDrink(ArrayList<ArrayList<Integer>> customerSequence, ArrayList<Ingredient> inventory,
                                      ArrayList<Beverage> beverages) throws InterruptedException {
-        for (ArrayList<Integer> currentSequence: customerSequence) {
-            for (Integer drinkIndex: currentSequence) {
+        for (ArrayList<Integer> currentSequence : customerSequence) {
+            for (Integer drinkIndex : currentSequence) {
                 if (drinkIndex > -1) {
                     new Thread(new MakeDrink(beverages.get(drinkIndex), inventory)).start();
                 }
