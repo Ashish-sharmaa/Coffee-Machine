@@ -26,7 +26,7 @@ public class InputProcessorTest {
         JSONObject jsonObject = new JSONObject();
         try {
             InputProcessor.getOutLetCount(jsonObject);
-            fail("getOutLetCount method should throw exception in case of string inputs");
+            fail("getOutLetCount method should throw exception in case of missing input");
         } catch(Exception e) {
             String expectedResult = "count_n is not Integer";
             String actualResult = e.getMessage();
@@ -39,7 +39,7 @@ public class InputProcessorTest {
         jsonObject.put("count_n", "df");
         try {
             InputProcessor.getOutLetCount(jsonObject);
-            fail("getOutLetCount method should throw exception in case of string inputs");
+            fail("getOutLetCount method should throw exception in case of string input");
         } catch(Exception e) {
             String expectedResult = "count_n is not Integer";
             String actualResult = e.getMessage();

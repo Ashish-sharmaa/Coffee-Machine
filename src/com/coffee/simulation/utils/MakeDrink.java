@@ -28,8 +28,8 @@ public class MakeDrink implements Runnable {
         System.out.println();
     }
 
-    private static boolean checkForAvailability(@NotNull Beverage beverage,
-                                                ArrayList<Ingredient> inventory) {
+    static boolean checkForAvailability(@NotNull Beverage beverage,
+                                        ArrayList<Ingredient> inventory) {
         for (Ingredient required : beverage.getRequiredIngredients()) {
             boolean isItemExists = false;
             for (Ingredient available : inventory) {
@@ -49,7 +49,7 @@ public class MakeDrink implements Runnable {
         return true;
     }
 
-    private static void updateQuantity(@NotNull Beverage beverage, ArrayList<Ingredient> inventory) {
+    static void updateQuantity(@NotNull Beverage beverage, ArrayList<Ingredient> inventory) {
         for (Ingredient required : beverage.getRequiredIngredients()) {
             for (Ingredient available : inventory) {
                 if (required.getName().equals(available.getName())) {
