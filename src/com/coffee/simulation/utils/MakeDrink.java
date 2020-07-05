@@ -28,20 +28,25 @@ public class MakeDrink implements Runnable {
         System.out.println();
     }
 
+    /* Check whether it is feasible to prepare the drink */
     static boolean checkForAvailability(@NotNull Beverage beverage,
                                         ArrayList<Ingredient> inventory) {
+        System.out.println("Ingredients required for preparing " + beverage.getName() + " are:");
+        for (Ingredient ingredient: beverage.getRequiredIngredients()) {
+            System.out.println(ingredient.getName() + " with quantity: " + ingredient.getQuantity());
+        }
         for (Ingredient required : beverage.getRequiredIngredients()) {
-            boolean isItemExists = false;
+            boolean isIngredientExists = false;
             for (Ingredient available : inventory) {
                 if (required.getName().equals(available.getName())) {
-                    isItemExists = true;
+                    isIngredientExists = true;
                     if (required.getQuantity() > available.getQuantity()) {
                         System.out.println("***" + beverage.getName() + " cannot be prepared because " + required.getName() + " is not available***");
                         return false;
                     }
                 }
             }
-            if (!isItemExists) {
+            if (!isIngredientExists) {
                 System.out.println("***" + beverage.getName() + " cannot be prepared because " + required.getName() + " is not available***");
                 return false;
             }
@@ -49,6 +54,7 @@ public class MakeDrink implements Runnable {
         return true;
     }
 
+    /* Prepare the drink and update the inventory */
     static void updateQuantity(@NotNull Beverage beverage, ArrayList<Ingredient> inventory) {
         for (Ingredient required : beverage.getRequiredIngredients()) {
             for (Ingredient available : inventory) {
