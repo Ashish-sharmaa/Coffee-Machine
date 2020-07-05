@@ -12,6 +12,7 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+
 /*
     Assumption:
            1. Number of instances a group of consumers can arrive at any point is generated randomly with modulo 10

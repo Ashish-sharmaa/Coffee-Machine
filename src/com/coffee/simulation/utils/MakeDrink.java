@@ -32,7 +32,7 @@ public class MakeDrink implements Runnable {
     static boolean checkForAvailability(@NotNull Beverage beverage,
                                         ArrayList<Ingredient> inventory) {
         System.out.println("Ingredients required for preparing " + beverage.getName() + " are:");
-        for (Ingredient ingredient: beverage.getRequiredIngredients()) {
+        for (Ingredient ingredient : beverage.getRequiredIngredients()) {
             System.out.println(ingredient.getName() + " with quantity: " + ingredient.getQuantity());
         }
         for (Ingredient required : beverage.getRequiredIngredients()) {
